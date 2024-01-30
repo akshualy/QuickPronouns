@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id "com.diffplug.spotless" version "6.25.0"
+}
+
+group = 'me.gadse'
+version = '1.0.0'
+
+repositories {
+	mavenCentral()
+	maven {
+		name = "spigotmc-repo"
+		url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+	}
+	maven {
+		name = "sonatype"
+		url = "https://oss.sonatype.org/content/groups/public/"
+	}
+	maven {
+		url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+	}
+}
+
+dependencies {
+	compileOnly "org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT"
+	compileOnly 'me.clip:placeholderapi:2.11.5'
+}
+
+def targetJavaVersion = 17
+java {
+	def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+	sourceCompatibility = javaVersion
+	targetCompatibility = javaVersion
+	if (JavaVersion.current() < javaVersion) {
+		toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+		options.release = targetJavaVersion
+	}
+}
+
+spotless {
+	format 'misc', {
+		target '*.gradle', '*.md', '.gitignore'
+
+		trimTrailingWhitespace()
+		indentWithTabs()
+		endWithNewline()
+	}
+	java {
+		palantirJavaFormat('2.40.0')
+		formatAnnotations()
+	}
+}
+
+build {
+	dependsOn spotlessApply
+}

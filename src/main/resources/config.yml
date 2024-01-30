@@ -1,0 +1,157 @@
+messages:
+  # Shown in front of every message.
+  prefix: "&#3494E6&lP&#4E8FDE&lR&#6989D6&lO&#8384CE&lN&#9D7EC5&lO&#B779BD&lU&#D273B5&lN&#EC6EAD&lS &8&l»&7 "
+  # Shown after the configuration has been reloaded.
+  reload: "Configuration has been reloaded."
+  # Shown if the console tries to use a command that only a player can use.
+  players_only: "Only players can use this command."
+  # Shown if a user does not have permissions to a sub-command.
+  no_permission: "You do not have the permission to do this."
+  # Shown if the %target% of a command is invalid.
+  target_invalid: "The player &f%target% &7does not exist or is not online."
+  # Shown if a menu has been opened for another player.
+  menu_opened_other: "You have opened the pronouns menu for &f%target%&7."
+  # Shown after pronouns have been set.
+  # Supported placeholders: %pronouns_display%.
+  pronouns_set: "Your pronouns have been set to &f%pronouns_display%&7!"
+  # Shown after pronouns have been removed.
+  pronouns_removed: "Your pronouns have been removed."
+  # Message shown if a player removes the pronouns of someone else. %target% is the other player's name.
+  pronouns_removed_other: "You have removed the pronouns of &f%target%&7."
+  # Players can enable a reminder they get when joining,
+  # what their current pronouns are and where to change them.
+  gender_fluid_reminder_enable: "You have &aenabled &7pronoun reminders upon joining."
+  gender_fluid_reminder_disable: "You have &cdisabled &7pronoun reminders upon joining."
+  # This is the reminder shown to people upon joining, if they have it enabled.
+  gender_fluid_reminder: "Your current pronouns are &f%pronouns_display%&7.\n&7If you want to, you can change them under &f/pronouns&7!"
+
+
+sounds:
+  gui_click:
+    # List of sounds: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+    # Defaults to 'ui_button_click'.
+    sound: ui_button_click
+    # Sound categories: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/SoundCategory.html
+    # Defaults to 'master'.
+    category: master
+    # The volume of the sound, must be between 0 (silent) and 2.0 (loud)
+    #Defaults to 1.0.
+    volume: 1.0
+    # The pitch of the sound, must be between 0 (deep) and 2.0 (high)
+    # Defaults to 1.0.
+    pitch: 1.0
+  gui_click_deny:
+    sound: entity_villager_no
+  gui_open:
+    sound: block_shulker_box_open
+  gui_close:
+    sound: block_shulker_box_close
+
+gui:
+  # The size of the GUI
+  size: 45
+  # The title of the GUI
+  title: "&d&lPronouns"
+  # The layout of the GUI
+  layout:
+    # slot: pronoun/function.
+    # Special functions: 'close', 'none', 'fluid_toggle'.
+    9: hehim
+    10: heshe
+    11: hethey
+    12: heit
+    18: sheher
+    19: shehe
+    20: shethey
+    21: sheit
+    27: theythem
+    28: theyhe
+    29: theyshe
+    30: theyit
+    36: it
+    23: any
+    24: ask
+    25: none
+    44: fluid_toggle
+    8: close
+  close:
+    # The type of item to use as icon.
+    icon: structure_void
+    # The displayed name of the item.
+    name: "&c&lClose"
+    # The lore/description of the item.
+    lore:
+      - "&eLeft-Click &7to close the GUI."
+  # Supported placeholders:
+  # - %pronouns_display%
+  # - %fluid_toggle_enabled%
+  fluid_toggle:
+    icon: bookshelf
+    name: "&dToggle pronoun reminder"
+    lore:
+      - "&7Remind yourself what your current pronouns"
+      - "&7are each time you join."
+      - "&r"
+      - "&7Enabled: %fluid_toggle_enabled%"
+      - "&7Current pronouns: &f%pronouns_display%"
+    # This replaces %fluid_toggle_enabled% if it is enabled
+    enabled: "&aYes"
+    # This replaces %fluid_toggle_enabled% if it is disabled
+    disabled: "&cNo"
+  none:
+    icon: paper
+    name: "&cRemove your pronouns"
+    lore:
+      - "&eLeft-Click &7to remove your pronouns."
+  pronoun:
+    # This config does not support icons,
+    # but you can specify icons in the pronouns below.
+    #
+    # Supported placeholders:
+    # - %pronouns_display%
+    name: "&b%pronouns_display%"
+    lore:
+      - "&eLeft-Click &7to change your pronouns."
+    selected_lore:
+      - "&7These are your current pronouns."
+
+
+# The section where to configure the pronouns on your server
+pronouns:
+  # The "ID" of the pronoun, does not matter.
+  hehim:
+    # The item material in the GUI, defaults to name_tag.
+    # List of materials: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+    icon: name_tag
+    # The display for the pronoun, used in the GUI and in %pronouns_display%.
+    display: "He/Him"
+  heit:
+    display: He/It
+  heshe:
+    display: He/She
+  hethey:
+    display: He/They
+  sheher:
+    display: She/Her
+  shehe:
+    display: She/He
+  sheit:
+    display: She/It
+  shethey:
+    display: She/They
+  theythem:
+    display: They/Them
+  theyhe:
+    display: They/He
+  theyit:
+    display: They/It
+  theyshe:
+    display: They/She
+  it:
+    display: It/Its
+  any:
+    icon: book
+    display: Any
+  ask:
+    icon: knowledge_book
+    display: Ask

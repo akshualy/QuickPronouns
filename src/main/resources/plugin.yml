@@ -1,0 +1,20 @@
+name: QuickPronouns
+version: '1.0.0'
+main: me.gadse.quickpronouns.QuickPronouns
+api-version: 1.18
+softdepend: [PlaceholderAPI]
+
+commands:
+  pronouns:
+    description: "Command to interact with the plugin QuickPronouns."
+    usage: /pronouns <menu [target] | reload | help>
+
+permissions:
+  pronouns.command.pronouns.menu:
+    default: true
+  pronouns.command.pronouns.menu.other:
+    default: op
+  pronouns.command.pronouns.reload:
+    default: op
+  pronouns.command.pronouns.help:
+    default: op
